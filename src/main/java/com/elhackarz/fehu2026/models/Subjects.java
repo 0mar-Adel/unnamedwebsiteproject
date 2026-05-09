@@ -22,12 +22,6 @@ public class Subjects {
     @Column(nullable = false, length = 20, unique = false)
     private String instructor;
 
-    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
-    private List<Exams> pastExams;
-
-    public List<Exams> getPastExams() { return pastExams; }
-    public void setPastExams(List<Exams> pastExams) { this.pastExams = pastExams; }
-
     public Subjects() {
         // dont need to implement
     }
