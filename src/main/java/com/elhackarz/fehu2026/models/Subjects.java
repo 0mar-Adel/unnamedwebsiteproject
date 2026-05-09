@@ -1,10 +1,14 @@
 package com.elhackarz.fehu2026.models;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Subjects {
@@ -17,6 +21,12 @@ public class Subjects {
     private String imagepath;
     @Column(nullable = false, length = 20, unique = false)
     private String instructor;
+
+    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
+    private List<Exams> pastExams;
+
+    public List<Exams> getPastExams() { return pastExams; }
+    public void setPastExams(List<Exams> pastExams) { this.pastExams = pastExams; }
 
     public Subjects() {
         // dont need to implement

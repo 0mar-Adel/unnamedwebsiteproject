@@ -1,13 +1,14 @@
 package com.elhackarz.fehu2026.controller;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
 import org.springframework.web.bind.annotation.*;
+
+import com.elhackarz.fehu2026.models.Exams;
 import com.elhackarz.fehu2026.models.Lectures;
 import com.elhackarz.fehu2026.models.Subjects;
+import com.elhackarz.fehu2026.repositories.ExamsRepo;
 import com.elhackarz.fehu2026.repositories.LecturesRepo;
-import org.springframework.web.bind.annotation.GetMapping;
 import com.elhackarz.fehu2026.repositories.SubjectsRepo;
 
 @RestController
@@ -16,9 +17,16 @@ public class GetApi {
     private final LecturesRepo lecturesrepo;
     private final SubjectsRepo subjectsrepo;
 
-    public GetApi(LecturesRepo lecturesrepo, SubjectsRepo subjectsrepo) {
+    // 1. Add the repo to the top of GetApi
+private final ExamsRepo examsRepo;
+
+
+
+
+    public GetApi(LecturesRepo lecturesrepo, SubjectsRepo subjectsrepo, ExamsRepo examsRepo) {
         this.lecturesrepo = lecturesrepo;
         this.subjectsrepo = subjectsrepo;
+        this.examsRepo = examsRepo;
     }
 
     @PostMapping("/addsubject")
@@ -44,6 +52,11 @@ public class GetApi {
     @GetMapping("/getsubjects")
     public List<Subjects> getSubjects() {
         return subjectsrepo.findAll();
+    }
+
+    @GetMapping("/exams/{subjectId}")
+    public List<Exams> getExamsBySubject(@PathVariable Long subjectId) {
+    return examsRepo.findBySubjectId(subjectId);
     }
 
 }
