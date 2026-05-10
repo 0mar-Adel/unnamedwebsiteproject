@@ -19,7 +19,6 @@ import com.elhackarz.fehu2026.dto.LoginRequest;
 import com.elhackarz.fehu2026.dto.SignupRequest;
 import com.elhackarz.fehu2026.models.User;
 import com.elhackarz.fehu2026.repositories.UserRepository;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -58,11 +57,9 @@ public class AuthenticationController {
         }
         User user = new User();
         user.setName(signupRequest.getName());
-        user.setGpa(signupRequest.getGpa());
         user.setEmail(signupRequest.getEmail());
         user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
         user.setUsername(signupRequest.getUsername());
-        user.setBirthyear(signupRequest.getBirthyear());
         user.setRole("ROLE_USER");
         userRepository.save(user);
         return new RedirectView("/login?OK");

@@ -1,7 +1,5 @@
 package com.elhackarz.fehu2026.models;
 
-import java.time.LocalDate;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,8 +17,6 @@ public class User {
     private long id;
     private String name;
     private String username;
-    private Double gpa;
-    private int birthyear;
     @Column(unique = true)
     private String email;
     private String password;

@@ -1,26 +1,22 @@
 package com.elhackarz.fehu2026.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Data;
-
+import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Data
 @Entity
 public class Exams {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(nullable = false, length = 40, unique = false)
-    private String name;
-    @Column(nullable = false, length = 500, unique = true)
-    private String url;
-    @Column(nullable = false, length = 40, unique = false)
+    private Long id;
+
+    private String examName; 
+    
+    @Column(length = 500, unique = true) 
+    private String driveUrl; 
+
     private String subject;
-    @Column(nullable = false, length = 100, unique = false)
-    private String imagepath;
+
+    public Exams() {}
 
 }

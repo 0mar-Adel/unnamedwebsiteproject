@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 public class Subjects {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(nullable = false, length = 20, unique = true)
     private String name;
     @Column(nullable = false, length = 100, unique = false)
